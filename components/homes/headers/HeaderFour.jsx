@@ -59,14 +59,14 @@ export default function HeaderFour() {
           <div className="row">
             <div className="col-6">
               <div className="bostami-header-logo">
-                <Link className="site-logo" href="/">
+                {/* <Link className="site-logo" href="/">
                   <Image
                     width={153}
                     height={32}
                     src="/assets/img/logo/logo-2.png"
                     alt="logo"
                   />
-                </Link>
+                </Link> */}
               </div>
             </div>
 

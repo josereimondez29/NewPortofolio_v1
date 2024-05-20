@@ -15,7 +15,7 @@ export default function ContactTwo() {
             <div className="row">
               <div className="col-12">
                 <div className="bostami-page-title-wrap mb-40">
-                  <h2 className="page-title">contact</h2>
+                  <h2 className="page-title">contáctame</h2>
                 </div>
               </div>
             </div>
@@ -54,10 +54,8 @@ export default function ContactTwo() {
 
               <div className="col-xl-8  col-lg-12">
                 <div className="contact-area bg-light-white-2 mb-60">
-                  <h5 className="contact-title">
-                    I'm always open to discussing produuct
-                  </h5>
-                  <h5 className="contact-title-b">design work or partnerships.</h5>
+                <h5 className="contact-title">Siempre estoy abierto a discutir sobre productos</h5>
+          <h5 className="contact-title-b">Diseño de trabajo o asociaciones..</h5>
                   <ContactForm/>
                 </div>
               </div>
@@ -66,7 +64,7 @@ export default function ContactTwo() {
 
           <div className="footer-copyright text-center pt-25 pb-25 bg-light-white-2 border-redius-20">
             <span>
-              © {new Date().getFullYear()} All Rights Reserved by elite-themes24.
+              © {new Date().getFullYear()} Todos los Derechos Reservados - Web Diseñada por José Reimondez.
             </span>
           </div>
         </div>

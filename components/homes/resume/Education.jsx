@@ -13,7 +13,7 @@ export default function Education() {
             src="/assets/img/icon/edu-icon.png"
             alt="icon"
           />
-          Education
+          Educación
         </h4>
       </div>
 

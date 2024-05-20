@@ -62,14 +62,14 @@ export default function HeaderTwo() {
           <div className="row">
             <div className="col-lg-2 col-md-6 col-sm-4 col-4 d-flex align-items-center">
               <div className="bostami-header-logo">
-                <Link className="site-logo" href="/">
+                {/* <Link className="site-logo" href="/">
                   <Image
                     width={153}
                     height={32}
                     src="/assets/img/logo/logo-2.png"
                     alt="logo"
                   />
-                </Link>
+                </Link> */}
               </div>
             </div>
 

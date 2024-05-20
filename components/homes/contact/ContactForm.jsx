@@ -54,7 +54,7 @@ export default function ContactForm() {
     <form className="contact-form"  ref={form}
               onSubmit={sendEmail}>
                     <div className="form-input-item mb-60">
-                <label style={activeInputBoxes.includes('name')? {color:'#FE7878'}:{}} className="input-lebel name">name *</label>
+                <label style={activeInputBoxes.includes('name')? {color:'#FE7878'}:{}} className="input-lebel name">Nombre *</label>
                 <input
                   name="name"
                   className={`input-box name ${activeInputBoxes.includes('name') && 'height'} `}
@@ -76,7 +76,7 @@ export default function ContactForm() {
                 />
               </div>
               <div className="form-input-item mb-40">
-                <label  style={activeInputBoxes.includes('message')? {color:'#CE65F3'}:{}} className="input-lebel message">Message *</label>
+                <label  style={activeInputBoxes.includes('message')? {color:'#CE65F3'}:{}} className="input-lebel message">Mensaje *</label>
                 <textarea
                   name="message"
                   className={`input-box message ${activeInputBoxes.includes('message') && 'height'} `}
@@ -88,7 +88,7 @@ export default function ContactForm() {
               </div>
                     <div className="form-btn-wrap">
                       <button type="submit" value="Send" className="form-btn">
-                        submit
+                        Enviar
                       </button>
                     </div>
                   </form>

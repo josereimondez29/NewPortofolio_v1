@@ -15,7 +15,7 @@ export default function ResumeTwo() {
             <div className="row">
               <div className="col-12">
                 <div className="bostami-page-title-wrap mb-40">
-                  <h2 className="page-title">Resume</h2>
+                  <h2 className="page-title">CV</h2>
                 </div>
               </div>
             </div>
@@ -32,7 +32,7 @@ export default function ResumeTwo() {
                       src="/assets/img/icon/edu-icon-2.png"
                       alt="education"
                     />
-                    Education
+                    Educación
                   </h4>
                 </div>
 
@@ -63,7 +63,7 @@ export default function ResumeTwo() {
                       src="/assets/img/icon/exper-icon-2.png"
                       alt="experience"
                     />
-                    experience
+                    experiencia
                   </h4>
                 </div>
 
@@ -118,7 +118,7 @@ export default function ResumeTwo() {
             <div className="row">
               <div className="col-xl-6 col-lg-7">
                 <div className="bostami-section-title-wrap mb-20">
-                  <h4 className="section-title">Working Skills</h4>
+                  <h4 className="section-title">Especialidades</h4>
                 </div>
 
                 <div className="skill-bar-wrap">
@@ -146,7 +146,7 @@ export default function ResumeTwo() {
 
               <div className="col-xl-6 col-lg-5">
                 <div className="bostami-section-title-wrap mb-20">
-                  <h4 className="section-title">Knowledges</h4>
+                  <h4 className="section-title">Conocimientos</h4>
                 </div>
 
                 <div className="knowledeges-item-wrap">
@@ -162,7 +162,7 @@ export default function ResumeTwo() {
 
           <div className="footer-copyright text-center pt-25 pb-25">
             <span>
-              © {new Date().getFullYear()} All Rights Reserved by elite-themes24.
+              © {new Date().getFullYear()} Todos los Derechos Reservados - Web Diseñada por José Reimondez.
             </span>
           </div>
         </div>

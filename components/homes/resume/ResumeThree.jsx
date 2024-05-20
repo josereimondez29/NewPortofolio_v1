@@ -10,7 +10,7 @@ export default function ResumeThree() {
     <div className="bostami-page-content-wrap">
       <div className="section-wrapper pl-60 pr-60 pt-60">
         <div className="bostami-page-title-wrap mb-15">
-          <h2 className="page-title">resume</h2>
+          <h2 className="page-title">CV</h2>
         </div>
       </div>
 
@@ -25,7 +25,7 @@ export default function ResumeThree() {
                   src="/assets/img/icon/edu-icon-2.png"
                   alt="education"
                 />
-                Education
+                Educación
               </h4>
             </div>
 
@@ -55,7 +55,7 @@ export default function ResumeThree() {
                   src="/assets/img/icon/exper-icon-2.png"
                   alt="experience"
                 />
-                experience
+                experiencia
               </h4>
             </div>
 
@@ -79,7 +79,7 @@ export default function ResumeThree() {
         <div className="row">
           <div className="col-xl-6 col-lg-7">
             <div className="bostami-section-title-wrap mb-20">
-              <h4 className="section-title">Working Skills</h4>
+              <h4 className="section-title">Especialidades</h4>
             </div>
 
             <div className="skill-bar-wrap">
@@ -107,7 +107,7 @@ export default function ResumeThree() {
 
           <div className="col-xl-6 col-lg-5">
             <div className="bostami-section-title-wrap mb-20">
-              <h4 className="section-title">Knowledges</h4>
+              <h4 className="section-title">Conocimientos</h4>
             </div>
 
             <div className="knowledeges-item-wrap">
