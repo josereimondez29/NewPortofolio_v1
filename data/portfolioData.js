@@ -4,32 +4,25 @@ export const portfolioData = [
     class: "isotop-item logo",
     bgClass: "bg-prink",
     imgSrc: "/assets/img/work/work-img-1.png",
-    subtitle: "Travel Landing , UX/UI",
-    title: "Chul urina",
+    subtitle: "Hospital Online",
+    title: "MediConecta",
     target: "#portfolio-1",
     category: ["Logo"],
-    project: "website",
-    languages: ["Photoshop", "Figma"],
-    client: "Envato",
-    previewLink: "#",
-    previewName: "www.envato.com",
+    project: "webapp",
+    languages: ["HTML", "CSS" , "Bootstrap", "React" , "JavaScript", "Python" , "JWT", "SQLAlchemy" , "API", "Cloud"],
+    client: "MediConecta",
+    previewLink: "https://sample-service-name-affb.onrender.com/?trk=public_profile_project-button",
+    previewName: "MediConecta",
     desc: [
-      `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga
-      consequatur delectus porro sapiente molestias, magni quasi sed, enim
-      corporis omnis doloremque soluta inventore dolorum conseqr quo
-      obcaecati rerum sit non. Lorem ipsum dolor, sit amet consectetur
-      adipisicing elit. Fuga consequatur delectus porro sapiente molestias,
-      magni quasi sed, enim corporis omnis doloremque soluta inventore
-      dolorum consequuntur quo obcaecati rerum sit non.`,
-
-      ` Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga
-      consequatur delectus porro sapiente molestias, magni quasi sed, enim
-      corporis omnis doloremque soluta inventore dolorum consetur quo
-      obcaecati rerum sit non. Lorem ipsum dolor, sit amet consectetur
-      adipisicing elit. Fuga consequatur delectus porro sapiente molestias,
-      magni quasi sed, sit amet consectetur adipisicing elit. Fuga
-      consequatur delectus porro sapiente molestias, magni quasi sed, enim
-      corporis omnis doloremque soluta inventore dolorum consequuntur.`,
+      `MediConecta es un Hospital Online que brinda atención médica
+      en varias especialidades. Para sacar una cita tienes que estar
+      en la web, pasas a seleccionar el calendario de disponibilidad
+      del doctor y una vez hecha la reserva de cita te llegara tus datos
+      de reserva para la cita al email y el link de tu VideConferencia 
+      que es el medio por el cual serás atendido por el doctor. En tu área de 
+      perfil también podras ver todos tus datos, acceder a la VideConferencia
+      e inclusive adjuntarle documentación para que el doctor
+      pueda revisarla.`
     ],
   },
   {
