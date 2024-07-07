@@ -1,0 +1,19 @@
+{
+    "python.pythonPath": "/Users/josereimondez/blogcv_app/NewPortofolio_v1/myblog/bin/python",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint_django"
+    ],
+    "python.autoComplete.extraPaths": [
+        "/Users/josereimondez/blogcv_app/NewPortofolio_v1",
+        "/Users/josereimondez/blogcv_app/NewPortofolio_v1/myblog"
+    ],
+    "python.analysis.extraPaths": [
+        "/Users/josereimondez/blogcv_app/NewPortofolio_v1",
+        "/Users/josereimondez/blogcv_app/NewPortofolio_v1/myblog"
+    ]
+}
