@@ -1,0 +1,19 @@
+<!-- myblog/templates/post_list.html -->
+
+<h1>Listado de Posts</h1>
+
+<ul>
+    {% for post in posts %}
+        <li>
+            <strong>{{ post.title }}</strong><br>
+            {{ post.content }}<br>
+            Publicado el: {{ post.created_at }}
+            <a href="{% url 'post_update' post.pk %}">Editar</a>
+            <a href="{% url 'post_delete' post.pk %}">Eliminar</a>
+        </li>
+    {% empty %}
+        <li>No hay posts aún.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'post_create' %}">Crear Nuevo Post</a>

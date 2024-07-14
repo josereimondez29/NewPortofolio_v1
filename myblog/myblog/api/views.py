@@ -1,6 +1,7 @@
-from django.shortcuts import render
-from django.views import View
+# myblog/myblog/api/views.py
+
 from django.http import JsonResponse
+from django.views import View
 
 # Ejemplo de una vista basada en función
 def endpoint_view(request):

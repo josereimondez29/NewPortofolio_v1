@@ -14,15 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-# Importa las funciones y clases necesarias
+# myblog/myblog/api/urls.py
+
+# myblog/myblog/api/urls.py
+
 from django.urls import path
-from . import views  # Importa las vistas definidas en este directorio
+from . import views  # Asegúrate de que el archivo views.py esté en el mismo directorio
 
-# Define las URLs de tu aplicación de API
 urlpatterns = [
-    # Asegúrate de importar las vistas que necesitas usar
-    path('endpoint/', views.EndpointView.as_view(), name='endpoint'),  # Ejemplo de URL para una vista de endpoint
-    # Puedes agregar más paths aquí según sea necesario para tu API
+    path('endpoint/', views.endpoint_view, name='endpoint'),
+    path('endpoint-class/', views.EndpointView.as_view(), name='endpoint_class'),
+    # Otros paths según sea necesario
 ]
-
 

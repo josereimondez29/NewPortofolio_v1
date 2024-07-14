@@ -14,22 +14,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-# Importa las funciones y clases necesarias
-from django.urls import path, include
-from django.views.generic import TemplateView
-from django.contrib import admin
-from django.conf import settings
-from django.conf.urls.static import static
 
-# Define las URLs de tu aplicación
+# Importa las funciones y clases necesarias
+
+
+# myblog/myblog/urls.py
+
+# myblog/myblog/urls.py
+
+from django.contrib import admin
+from django.urls import path, include
+
 urlpatterns = [
-    path('admin/', admin.site.urls),  # Ruta para acceder al panel de administración de Django
-    path('api/', include('myblog.api.urls')),  # Incluye las URLs de la API desde 'myblog/api/urls.py'
-    path('', TemplateView.as_view(template_name='index.html'), name='home'),  # Ruta para la URL raíz
+    path('admin/', admin.site.urls),
+    path('', include('blog.urls')),  # Ajusta según la ruta de tus URLs del blog
 ]
 
-# Configuración para servir archivos estáticos en modo de desarrollo
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

@@ -1,14 +1,14 @@
 from django.db import models
 
+
+
 class Post(models.Model):
-    title = models.CharField(max_length=200)
-    category = models.CharField(max_length=100)
-    date = models.DateField()
+    title = models.CharField(max_length=255)
     content = models.TextField()
-    imgSrc = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
 
     def __str__(self):
-        assert isinstance(self.title, str), f"Expected str, got {type(self.title).__name__}"
-        return self.title
-
+        return str(self.title)
 
