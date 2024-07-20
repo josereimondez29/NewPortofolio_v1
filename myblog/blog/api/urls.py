@@ -1,13 +1,8 @@
 # myblog/blog/api/urls.py
-
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from . import views
-
-router = DefaultRouter()
-router.register(r'posts', views.PostViewSet)
+from django.urls import path
+from blog.api.views import PostListAPIView  # Importa la vista usando la ruta completa
 
 urlpatterns = [
-    path('', include(router.urls)),
-    # Otros paths según sea necesario
+    path('posts/', PostListAPIView.as_view(), name='post-list'),
 ]
+

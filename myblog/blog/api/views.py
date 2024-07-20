@@ -1,11 +1,8 @@
-# myblog/blog/api/views.py
+from rest_framework import generics
+from blog.models import Post
+from blog.api.serializers import PostSerializer
 
-
-from blog.models import Post  # Importa el modelo Post desde blog.models
-from blog.serializers import PostSerializer  # Importa el serializador PostSerializer desde blog.serializers
-from rest_framework import viewsets
-
-class PostViewSet(viewsets.ModelViewSet):
+class PostListAPIView(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
