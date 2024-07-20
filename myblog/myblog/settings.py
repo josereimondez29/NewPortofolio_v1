@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'myblog.urls'
@@ -140,7 +141,8 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Replace with your React frontend URL
+    "http://localhost:3000",  # URL de tu frontend
+    "http://127.0.0.1:3000",  # Otra URL de tu frontend si es necesario
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
