@@ -1,8 +1,7 @@
-// myblog/src/components/homes/blogs/Modal.jsx
-
+// Modal.jsx
 "use client";
-import Image from "next/image";
 import React, { useEffect } from "react";
+import Image from "next/image";
 
 export default function Modal({ setShowModal, showModal, modalContent }) {
   useEffect(() => {
@@ -62,15 +61,40 @@ export default function Modal({ setShowModal, showModal, modalContent }) {
 
               <div className="blog-meta">
                 <span className="blog-date">{modalContent?.created_at}</span>
-                <span className="blog-cetagory">{modalContent?.category}</span>
+                <span className="blog-category">{modalContent?.category}</span>
               </div>
 
               <h6 className="blog-title">{modalContent?.title}</h6>
 
               <div className="h1-modal-paragraph">
-                {modalContent?.content && modalContent?.content.split("\n").map((paragraph, i) => (
+                {modalContent?.content && modalContent.content.split("\n").map((paragraph, i) => (
                   <p key={i}>{paragraph}</p>
                 ))}
+              </div>
+
+              <div className="h1-modal-comment-item">
+                <div className="img">
+                  <Image
+                    width={125}
+                    height={152}
+                    src="/assets/img/parsonal-info/parson-img-2.png"
+                    alt="comment"
+                  />
+                </div>
+                <div className="content">
+                  <div className="name-date">
+                    <h5 className="name">Rafia Ana</h5>
+                    <span className="date">15 min ago</span>
+                  </div>
+                  <p className="comment-text">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Sequi nam ad, unde vel aut soluta atque consequatur. Omnis,
+                    debitis nihil?
+                  </p>
+                  <a className="reply-btn" href="#">
+                    Reply
+                  </a>
+                </div>
               </div>
 
               <div className="h1-modal-comment-box">
@@ -86,18 +110,6 @@ export default function Modal({ setShowModal, showModal, modalContent }) {
           </div>
         </div>
       </div>
-      {showModal && (
-        <div className="modal-header ">
-          <button
-            type="button"
-            className="close"
-            data-bs-dismiss="modal"
-            onClick={() => setShowModal(false)}
-          >
-            <i className="far fa-times"></i>
-          </button>
-        </div>
-      )}
     </>
   );
 }

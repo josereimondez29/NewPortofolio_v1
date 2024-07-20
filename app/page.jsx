@@ -2,6 +2,7 @@ import AboutThree from "@/components/homes/about/AboutThree";
 import HeaderFour from "@/components/homes/headers/HeaderFour";
 import HeaderThree from "@/components/homes/headers/HeaderThree";
 import PersonalInfoThree from "@/components/homes/personalInfo/PersonalInfoThree";
+import BlogsThree from "@/components/homes/blogs/BlogsThree";
 import React from "react";
 
 export const metadata = {
@@ -19,6 +20,7 @@ export default function Home3() {
             <PersonalInfoThree />
             <div className="col-xxl-8 col-xl-8 col-lg-8">
               <HeaderThree />
+              <BlogsThree />
               <AboutThree />
             </div>
           </div>
