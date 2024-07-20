@@ -1,12 +1,15 @@
+// myblog/src/components/homes/blogs/BlogsThree.jsx
+
 "use client";
 
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { blogData } from "@/data/blogs";
-
 import React, { useEffect, useState } from "react";
 import Modal from "./Modal";
 import Image from "next/image";
+import axios from "axios";
+
+// Función para dividir el array en chunks
 const chunkArray = (arr, chunkSize) => {
   const result = [];
   for (let i = 0; i < arr.length; i += chunkSize) {
@@ -16,13 +19,26 @@ const chunkArray = (arr, chunkSize) => {
 };
 
 export default function BlogsThree() {
-  const [outputArray, setfirst] = useState(chunkArray(blogData, 4));
+  const [outputArray, setOutputArray] = useState([]);
   const [modalContent, setModalContent] = useState();
   const [showModal, setShowModal] = useState(false);
   const [showSlider, setShowSlider] = useState(false);
+
   useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/posts/");
+        const posts = response.data;
+        setOutputArray(chunkArray(posts, 4));
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    };
+
+    fetchPosts();
     setShowSlider(true);
   }, []);
+
   return (
     <>
       <div className="bostami-page-content-wrap">
@@ -37,56 +53,50 @@ export default function BlogsThree() {
             <div className="swiper-container blog-slider-active">
               {showSlider && (
                 <Swiper
-                  // {...setting}
                   modules={[Navigation, Pagination]}
                   pagination={{
                     el: ".blog-progation-three",
                     clickable: true,
                   }}
-                  // loop={true}
                   spaceBetween={10}
                   slidesPerView={1}
                   loop={true}
                 >
-                  {outputArray.map((elm, i) => (
+                  {outputArray.map((chunk, i) => (
                     <SwiperSlide key={i}>
                       <div className="swiper-slide">
                         <div className="row">
-                          {elm.map((elm2, i2) => (
-                            <div key={i2} className="col-lg-6 col-md-6">
-                              <div
-                                className={`blog-slider-single  ${elm2.bgClass} `}
-                              >
+                          {chunk.map((post, j) => (
+                            <div key={j} className="col-lg-6 col-md-6">
+                              <div className={`blog-slider-single bg-prink`}>
                                 <a className="img cursor-pointer">
                                   <Image
                                     width={430}
                                     height={430}
                                     onClick={() => {
-                                      setModalContent(elm2);
+                                      setModalContent(post);
                                       setShowModal(true);
                                     }}
                                     style={{
                                       width: "100%",
                                       height: "fit-content",
                                     }}
-                                    src={elm2.imgSrc}
+                                    src={post.image} // Suponiendo que "image" es el campo en tu modelo Post
                                     alt="blog"
                                   />
                                 </a>
                                 <div className="blog-meta">
-                                  <span className="blog-date">{elm2.date}</span>
-                                  <span className="blog-cetagory">
-                                    {elm2.category}
-                                  </span>
+                                  <span className="blog-date">{post.created_at}</span>
+                                  <span className="blog-cetagory">{post.category}</span>
                                 </div>
                                 <h6
                                   className="blog-title"
                                   onClick={() => {
-                                    setModalContent(elm2);
+                                    setModalContent(post);
                                     setShowModal(true);
                                   }}
                                 >
-                                  <a className="cursor-pointer">{elm2.title}</a>
+                                  <a className="cursor-pointer">{post.title}</a>
                                 </h6>
                               </div>
                             </div>
