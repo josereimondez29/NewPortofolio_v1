@@ -2,6 +2,13 @@ import BlogsThree from "@/components/homes/blogs/BlogsThree";
 import HeaderFour from "@/components/homes/headers/HeaderFour";
 import HeaderThree from "@/components/homes/headers/HeaderThree";
 import PersonalInfoThree from "@/components/homes/personalInfo/PersonalInfoThree";
+const express = require('express');
+const cors = require('./corsConfig'); // Asegúrate de ajustar la ruta según sea necesario
+
+const app = express();
+
+app.use(cors);
+
 export const metadata = {
   title: "José Reimondez || Blog",
   
