@@ -1,4 +1,3 @@
-// BlogsThree.jsx
 "use client";
 import React, { useEffect, useState } from "react";
 import { Navigation, Pagination } from "swiper";
@@ -22,9 +21,11 @@ export default function BlogsThree() {
   const [showModal, setShowModal] = useState(false);
   const [showSlider, setShowSlider] = useState(false);
 
+  // La solicitud de Axios va dentro del useEffect
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/posts/")
+    axios.get("https://josereimondez.com/api/posts/")
       .then(response => {
+        console.log(response.data);  // Verifica los datos en la consola
         setPosts(response.data);
         setOutputArray(chunkArray(response.data, 4));
         setShowSlider(true);
@@ -32,7 +33,7 @@ export default function BlogsThree() {
       .catch(error => {
         console.error("There was an error fetching the posts!", error);
       });
-  }, []);
+  }, []);  // El array vacío como segundo argumento asegura que esto solo se ejecute una vez cuando el componente se monta
 
   return (
     <>
@@ -106,5 +107,6 @@ export default function BlogsThree() {
     </>
   );
 }
+
 
 
