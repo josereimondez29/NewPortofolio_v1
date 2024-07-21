@@ -21,11 +21,11 @@ export default function BlogsThree() {
   const [showModal, setShowModal] = useState(false);
   const [showSlider, setShowSlider] = useState(false);
 
-  // La solicitud de Axios va dentro del useEffect
   useEffect(() => {
     axios.get("https://josereimondez.com/api/posts/")
       .then(response => {
-        console.log(response.data);  // Verifica los datos en la consola
+        // Verifica la estructura de los datos aquí
+        console.log(response.data);  
         setPosts(response.data);
         setOutputArray(chunkArray(response.data, 4));
         setShowSlider(true);
@@ -33,14 +33,14 @@ export default function BlogsThree() {
       .catch(error => {
         console.error("There was an error fetching the posts!", error);
       });
-  }, []);  // El array vacío como segundo argumento asegura que esto solo se ejecute una vez cuando el componente se monta
+  }, []);
 
   return (
     <>
       <div className="bostami-page-content-wrap">
         <div className="section-wrapper pl-60 pr-60 pt-60">
           <div className="bostami-page-title-wrap mb-15">
-            <h2 className="page-title">blogs</h2>
+            <h2 className="page-title">Blogs</h2>
           </div>
         </div>
 
@@ -70,12 +70,12 @@ export default function BlogsThree() {
                                     width={430}
                                     height={430}
                                     src={post.image}
-                                    alt="blog"
-                                    style={{ width: "100%", height: "fit-content" }}
+                                    alt={post.title}  // Usa el título o una descripción para alt
+                                    style={{ width: "100%", height: "auto" }} // Cambia 'fit-content' por 'auto'
                                   />
                                 </a>
                                 <div className="blog-meta">
-                                  <span className="blog-date">{post.created_at}</span>
+                                  <span className="blog-date">{new Date(post.created_at).toLocaleDateString()}</span>  {/* Formatea la fecha */}
                                   <span className="blog-category">{post.category}</span>
                                 </div>
                                 <h6 className="blog-title">
@@ -97,7 +97,7 @@ export default function BlogsThree() {
 
         <div className="footer-copyright text-center bg-light-white-2 pt-25 pb-25">
           <span>
-            © {new Date().getFullYear()} Todos los Derechos Reservados 2 - Web Diseñada por José Reimondez
+            © {new Date().getFullYear()} Todos los Derechos Reservados - Web Diseñada por José Reimondez
           </span>
         </div>
       </div>
@@ -107,6 +107,7 @@ export default function BlogsThree() {
     </>
   );
 }
+
 
 
 
