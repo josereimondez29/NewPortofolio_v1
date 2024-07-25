@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import axios from "axios";
+import axios from 'axios';
 import Modal from "./Modal";
 import Image from "next/image";
 
@@ -21,19 +21,19 @@ export default function BlogsThree() {
   const [showModal, setShowModal] = useState(false);
   const [showSlider, setShowSlider] = useState(false);
 
-  // La solicitud de Axios va dentro del useEffect
   useEffect(() => {
-    axios.get("https://josereimondez.com/api/posts/")
-      .then(response => {
-        console.log(response.data);  // Verifica los datos en la consola
+    axios.get('http://127.0.0.1:8000/api/posts/')
+    .then(response => {
+        console.log(response.data);
         setPosts(response.data);
-        setOutputArray(chunkArray(response.data, 4));
+        const chunks = chunkArray(response.data, 2); // Suponiendo que quieras 2 posts por slide
+        setOutputArray(chunks);
         setShowSlider(true);
-      })
-      .catch(error => {
-        console.error("There was an error fetching the posts!", error);
-      });
-  }, []);  // El array vacío como segundo argumento asegura que esto solo se ejecute una vez cuando el componente se monta
+    })
+    .catch(error => {
+        console.error('There was an error fetching the posts!', error);
+    });
+  }, []); 
 
   return (
     <>
