@@ -1,8 +1,9 @@
 # myblog/blog/api/serializers.py
 from rest_framework import serializers
-from blog.models import Post  # Importa el modelo usando la ruta completa
+from .models import Post
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ['id', 'title', 'content', 'published_date']
+

@@ -1,10 +1,12 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import axios from 'axios';
 import Modal from "./Modal";
 import Image from "next/image";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const chunkArray = (arr, chunkSize) => {
   const result = [];
@@ -23,24 +25,24 @@ export default function BlogsThree() {
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/posts/')
-    .then(response => {
+      .then(response => {
         console.log(response.data);
         setPosts(response.data);
         const chunks = chunkArray(response.data, 2); // Suponiendo que quieras 2 posts por slide
         setOutputArray(chunks);
         setShowSlider(true);
-    })
-    .catch(error => {
+      })
+      .catch(error => {
         console.error('There was an error fetching the posts!', error);
-    });
-  }, []); 
+      });
+  }, []);
 
   return (
     <>
       <div className="bostami-page-content-wrap">
         <div className="section-wrapper pl-60 pr-60 pt-60">
           <div className="bostami-page-title-wrap mb-15">
-            <h2 className="page-title">blogs</h2>
+            <h2 className="page-title">Blogs</h2>
           </div>
         </div>
 
@@ -75,7 +77,7 @@ export default function BlogsThree() {
                                   />
                                 </a>
                                 <div className="blog-meta">
-                                  <span className="blog-date">{post.created_at}</span>
+                                  <span className="blog-date">{post.published_date}</span>
                                   <span className="blog-category">{post.category}</span>
                                 </div>
                                 <h6 className="blog-title">
@@ -97,7 +99,7 @@ export default function BlogsThree() {
 
         <div className="footer-copyright text-center bg-light-white-2 pt-25 pb-25">
           <span>
-            © {new Date().getFullYear()} Todos los Derechos Reservados 2 - Web Diseñada por José Reimondez
+            © {new Date().getFullYear()} Todos los Derechos Reservados - Web Diseñada por José Reimondez
           </span>
         </div>
       </div>
@@ -107,6 +109,7 @@ export default function BlogsThree() {
     </>
   );
 }
+
 
 
 
