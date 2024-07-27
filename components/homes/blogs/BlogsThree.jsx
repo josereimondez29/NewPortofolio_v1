@@ -26,10 +26,10 @@ export default function BlogsThree() {
   const [showSlider, setShowSlider] = useState(false);
 
   useEffect(() => {
-    // Configuración de Axios
+    // Función para obtener los posts
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('/api/posts/'); // Ruta del proxy
+        const response = await axios.get('/api/posts/');
         console.log(response.data);
         setPosts(response.data);
 
@@ -107,7 +107,7 @@ export default function BlogsThree() {
 
         <div className="footer-copyright text-center bg-light-white-2 pt-25 pb-25">
           <span>
-            © {new Date().getFullYear()} Todos los Derechos Reservados4 - Web Diseñada por José Reimondez
+            © {new Date().getFullYear()} Todos los Derechos Reservados - Web Diseñada por José Reimondez
           </span>
         </div>
       </div>
@@ -117,6 +117,7 @@ export default function BlogsThree() {
     </>
   );
 }
+
 
 
 
