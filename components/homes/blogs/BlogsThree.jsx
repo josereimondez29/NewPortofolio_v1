@@ -9,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+
 const chunkArray = (arr, chunkSize) => {
   const result = [];
   for (let i = 0; i < arr.length; i += chunkSize) {
@@ -100,7 +101,7 @@ export default function BlogsThree() {
 
         <div className="footer-copyright text-center bg-light-white-2 pt-25 pb-25">
           <span>
-            © {new Date().getFullYear()} Todos los Derechos Reservados - Web Diseñada por José Reimondez
+            © {new Date().getFullYear()} Todos los Derechos Reservados4 - Web Diseñada por José Reimondez
           </span>
         </div>
       </div>
