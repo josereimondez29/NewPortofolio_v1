@@ -7,7 +7,7 @@ const express = require('express');
 
 const app = express();
 
-app.use(cors);
+
 
 export const metadata = {
   title: "José Reimondez || Blog",
