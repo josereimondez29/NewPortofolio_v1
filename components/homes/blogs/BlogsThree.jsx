@@ -9,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+// Función para dividir un array en trozos
 const chunkArray = (arr, chunkSize) => {
   const result = [];
   for (let i = 0; i < arr.length; i += chunkSize) {
@@ -25,17 +26,23 @@ export default function BlogsThree() {
   const [showSlider, setShowSlider] = useState(false);
 
   useEffect(() => {
-    axios.get('/api/posts/') // Usar la ruta del proxy en lugar de la URL completa
-      .then(response => {
+    // Configuración de Axios
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get('/api/posts/'); // Ruta del proxy
         console.log(response.data);
         setPosts(response.data);
-        const chunks = chunkArray(response.data, 2); // Suponiendo que quieras 2 posts por slide
+
+        // Dividir los posts en chunks de tamaño 2
+        const chunks = chunkArray(response.data, 2);
         setOutputArray(chunks);
         setShowSlider(true);
-      })
-      .catch(error => {
-        console.error('There was an error fetching the posts!', error);
-      });
+      } catch (error) {
+        console.error('There was an error fetching the posts!', error.response || error.message || error);
+      }
+    };
+
+    fetchPosts();
   }, []);
 
   return (
@@ -100,7 +107,7 @@ export default function BlogsThree() {
 
         <div className="footer-copyright text-center bg-light-white-2 pt-25 pb-25">
           <span>
-            © {new Date().getFullYear()} Todos los Derechos Reservados - Web Diseñada por José Reimondez
+            © {new Date().getFullYear()} Todos los Derechos Reservados4 - Web Diseñada por José Reimondez
           </span>
         </div>
       </div>
@@ -110,6 +117,7 @@ export default function BlogsThree() {
     </>
   );
 }
+
 
 
 
