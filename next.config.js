@@ -2,6 +2,7 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true, // Opcional, pero útil para identificar problemas en React
   async rewrites() {
     return [
       {
@@ -10,8 +11,16 @@ const nextConfig = {
       },
     ];
   },
+  webpack(config, { isServer }) {
+    // Ajustes específicos para Webpack en el entorno del cliente
+    if (!isServer) {
+      config.resolve.fallback = { fs: false };
+    }
+    return config;
+  },
 };
 
 module.exports = nextConfig;
+
 
   
