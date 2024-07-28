@@ -110,6 +110,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Puedes usar la siguiente configuración si necesitas más control sobre los orígenes permitidos
 CORS_ALLOWED_ORIGIN = [
      'http://localhost:3000',
+     "https://josereimondez.com",
+     "https://josereimondez.com/blog-3",
      'http://127.0.0.1:3000',
  ]
 

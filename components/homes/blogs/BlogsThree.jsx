@@ -1,7 +1,3 @@
-// BlogsThree.js
-
-"use client"; // Esto marca el componente como cliente
-
 import React, { useEffect, useState } from "react";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,7 +8,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-// Función para dividir un array en trozos
 const chunkArray = (arr, chunkSize) => {
   const result = [];
   for (let i = 0; i < arr.length; i += chunkSize) {
@@ -29,19 +24,17 @@ export default function BlogsThree() {
   const [showSlider, setShowSlider] = useState(false);
 
   useEffect(() => {
-    // Función para obtener los posts
     const apiBaseUrl = process.env.NODE_ENV === 'production' 
-  ? 'https://josereimondez.com/api/posts/' 
-  : 'http://localhost:8000/api/posts/';
+      ? 'https://josereimondez.com/api/posts/'
+      : 'http://localhost:8000/api/posts/';
 
     const fetchPosts = async () => {
       try {
         const response = await axios.get(apiBaseUrl);
         console.log(response.data);
         setPosts(response.data);
-        const chunks = chunkArray(response.data, 2); // Divide en chunks de 2
-        setOutputArray(chunks);
-        setShowSlider(true); // Muestra el slider solo después de obtener los posts
+        setShowSlider(true);
+        setOutputArray(chunkArray(response.data, 2));
       } catch (error) {
         console.error('There was an error fetching the posts!', error.response || error.message || error);
       }
@@ -122,6 +115,7 @@ export default function BlogsThree() {
     </>
   );
 }
+
 
 
 

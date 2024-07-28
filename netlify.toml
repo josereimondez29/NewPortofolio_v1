@@ -1,0 +1,12 @@
+[build]
+  publish = "out"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/api/*"
+  to = "http://127.0.0.1:8000/api/:splat"
+  status = 200
+  force = true
+
+[[functions]]
+  timeout = 30 # Aumenta el tiempo de espera si es necesario
