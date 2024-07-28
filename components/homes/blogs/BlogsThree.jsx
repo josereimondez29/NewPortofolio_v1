@@ -1,4 +1,5 @@
-"use client";
+// BlogsThree.js
+
 import React, { useEffect, useState } from "react";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -117,6 +118,7 @@ export default function BlogsThree() {
     </>
   );
 }
+
 
 
 

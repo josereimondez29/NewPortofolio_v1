@@ -69,3 +69,4 @@ def api_get_posts(request):
     return JsonResponse(posts, safe=False)
 
 
+

@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'corsheaders',  # Agrega corsheaders aquí
     'rest_framework',
     'blog',  # Nombre de tu aplicación
+    'myblog',  # Nombre de tu aplicación
 ]
 
 MIDDLEWARE = [
@@ -108,12 +109,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Puedes usar la siguiente configuración si necesitas más control sobre los orígenes permitidos
-CORS_ALLOWED_ORIGIN = [
-     'http://localhost:3000',
-     'http://127.0.0.1:3000',
- ]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
 
 # Otras configuraciones opcionales de CORS
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = ['*']
 CORS_ALLOW_METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
+
