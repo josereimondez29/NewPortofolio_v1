@@ -30,17 +30,22 @@ export default function BlogsThree() {
 
   useEffect(() => {
     // Función para obtener los posts
-    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/posts/';
+    const apiBaseUrl = process.env.NODE_ENV === 'production' 
+  ? 'https://josereimondez.com/api/posts/' 
+  : 'http://localhost:8000/api/posts/';
 
-const fetchPosts = async () => {
-  try {
-    const response = await axios.get(API_URL);
-    console.log(response.data);
-    setPosts(response.data);
-  } catch (error) {
-    console.error('There was an error fetching the posts!', error.response || error.message || error);
-  }
-};
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get(apiBaseUrl);
+        console.log(response.data);
+        setPosts(response.data);
+        const chunks = chunkArray(response.data, 2); // Divide en chunks de 2
+        setOutputArray(chunks);
+        setShowSlider(true); // Muestra el slider solo después de obtener los posts
+      } catch (error) {
+        console.error('There was an error fetching the posts!', error.response || error.message || error);
+      }
+    };
 
     fetchPosts();
   }, []);
@@ -117,6 +122,7 @@ const fetchPosts = async () => {
     </>
   );
 }
+
 
 
 
