@@ -9,5 +9,9 @@
   force = true
 
 [functions]
-  timeout = 30 # Aumenta el tiempo de espera si es necesario
+  node_bundler = "esbuild"
+
+[functions.timeout]
+  duration = 30 # Aumenta el tiempo de espera si es necesario
+
 
