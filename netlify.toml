@@ -8,5 +8,6 @@
   status = 200
   force = true
 
-[[functions]]
+[functions]
   timeout = 30 # Aumenta el tiempo de espera si es necesario
+
