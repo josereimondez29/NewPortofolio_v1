@@ -30,20 +30,17 @@ export default function BlogsThree() {
 
   useEffect(() => {
     // Función para obtener los posts
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get('/api/posts/');
-        console.log(response.data);
-        setPosts(response.data);
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/posts/';
 
-        // Dividir los posts en chunks de tamaño 2
-        const chunks = chunkArray(response.data, 2);
-        setOutputArray(chunks);
-        setShowSlider(true);
-      } catch (error) {
-        console.error('There was an error fetching the posts!', error.response || error.message || error);
-      }
-    };
+const fetchPosts = async () => {
+  try {
+    const response = await axios.get(API_URL);
+    console.log(response.data);
+    setPosts(response.data);
+  } catch (error) {
+    console.error('There was an error fetching the posts!', error.response || error.message || error);
+  }
+};
 
     fetchPosts();
   }, []);

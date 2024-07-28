@@ -1,5 +1,3 @@
-# myblog/blog/views.py
-
 from django.http import JsonResponse
 from django.views.generic import TemplateView
 from rest_framework import viewsets
@@ -67,6 +65,7 @@ class PostDeleteView(View):
 def api_get_posts(request):
     posts = list(Post.objects.values('id', 'title', 'image', 'published_date', 'category'))
     return JsonResponse(posts, safe=False)
+
 
 
 
