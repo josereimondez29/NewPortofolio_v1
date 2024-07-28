@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['https://josereimondez.com/'], // Añade los dominios de donde cargarás imágenes
+    domains: ['josereimondez.com'], // Añade los dominios de donde cargarás imágenes
   },
   async rewrites() {
     return [
@@ -21,6 +21,7 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
 
 
 
