@@ -10,9 +10,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'your-secret-key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False  # Cambia a False en producción
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']  # Especifica tus hosts permitidos en producción
 
 # Application definition
 INSTALLED_APPS = [
@@ -22,13 +22,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',  # Agrega corsheaders aquí
+    'corsheaders',  # CORS headers
     'rest_framework',
     'blog',  # Nombre de tu aplicación
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # Agrega esto al principio
+    'corsheaders.middleware.CorsMiddleware',  # CORS middleware
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -107,24 +107,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CORS settings
 CORS_ALLOW_ALL_ORIGINS = True
 
-# Puedes usar la siguiente configuración si necesitas más control sobre los orígenes permitidos
-CORS_ALLOWED_ORIGIN = [
-     'http://localhost:3000',
-     "https://josereimondez.com",
-     "https://josereimondez.com/blog-3",
-     "http://127.0.0.1:8000/api/posts/",
-     "http://127.0.0.1:8000/api/posts/?format=json",
-     "http://127.0.0.1:8000/api/posts/?format=api",
-     'http://127.0.0.1:3000',
- ]
+# Para más control sobre los orígenes permitidos, usa esta configuración:
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+#     'https://josereimondez.com',
+# ]
 
-# Otras configuraciones opcionales de CORS
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = ['*']
 CORS_ALLOW_METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
 
-# logs
-
+# Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -132,7 +125,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/path/to/your/logfile.log',
+            'filename': BASE_DIR / 'logs/django.log',
         },
     },
     'loggers': {

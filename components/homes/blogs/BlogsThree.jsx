@@ -28,7 +28,7 @@ export default function BlogsThree() {
   useEffect(() => {
     const apiBaseUrl = process.env.NODE_ENV === 'production' 
       ? 'https://josereimondez.com/api/posts/'
-      : 'http://localhost:8000/api/posts/?format=api';
+      : 'http://localhost:8000/api/posts/';
 
     const fetchPosts = async () => {
       try {
@@ -85,7 +85,7 @@ export default function BlogsThree() {
                                   />
                                 </a>
                                 <div className="blog-meta">
-                                  <span className="blog-date">{post.published_date}</span>
+                                  <span className="blog-date">{post.created_at}</span>
                                   <span className="blog-category">{post.category}</span>
                                 </div>
                                 <h6 className="blog-title">
@@ -117,6 +117,7 @@ export default function BlogsThree() {
     </>
   );
 }
+
 
 
 
