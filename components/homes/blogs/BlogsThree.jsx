@@ -107,7 +107,7 @@ export default function BlogsThree() {
 
         <div className="footer-copyright text-center bg-light-white-2 pt-25 pb-25">
           <span>
-            © {new Date().getFullYear()} Todos los Derechos Reservados - Web Diseñada por José Reimondez
+            © {new Date().getFullYear()} Todos los Derechos Reservados - prueba - Web Diseñada por José Reimondez
           </span>
         </div>
       </div>
