@@ -11,7 +11,7 @@ router.register(r'posts', views.PostViewSet)
 # URLs de la aplicación 'blog'
 urlpatterns = [
     path('', views.HomePageView.as_view(), name='home'),  # Ruta para la página principal
-    path('api/posts/', views.api_get_posts, name='api_get_posts'),  # Ruta para la vista de la API en formato JSON
+    path('api/posts/?format=json', views.api_get_posts, name='api_get_posts'),  # Ruta para la vista de la API en formato JSON
     path('api/', include(router.urls)),  # Ruta para las URLs de la API de REST framework
     path('post/', views.PostListView.as_view(), name='post_list'),
     path('post/create/', views.PostCreateView.as_view(), name='post_create'),

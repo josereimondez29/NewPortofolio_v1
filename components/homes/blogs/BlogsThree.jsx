@@ -28,7 +28,7 @@ export default function BlogsThree() {
   useEffect(() => {
     const apiBaseUrl = process.env.NODE_ENV === 'production' 
       ? 'https://josereimondez.com/api/posts/'
-      : 'http://localhost:8000/api/posts/';
+      : 'http://localhost:8000/api/posts/?format=api';
 
     const fetchPosts = async () => {
       try {

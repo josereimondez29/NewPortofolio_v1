@@ -112,6 +112,9 @@ CORS_ALLOWED_ORIGIN = [
      'http://localhost:3000',
      "https://josereimondez.com",
      "https://josereimondez.com/blog-3",
+     "http://127.0.0.1:8000/api/posts/",
+     "http://127.0.0.1:8000/api/posts/?format=json",
+     "http://127.0.0.1:8000/api/posts/?format=api",
      'http://127.0.0.1:3000',
  ]
 
