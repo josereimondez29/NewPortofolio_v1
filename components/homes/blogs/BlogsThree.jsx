@@ -1,5 +1,3 @@
-"use client"; // Asegura que el componente se ejecute en el cliente
-
 import React, { useEffect, useState } from "react";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+// Función para dividir los datos en chunks
 const chunkArray = (arr, chunkSize) => {
   const result = [];
   for (let i = 0; i < arr.length; i += chunkSize) {
@@ -26,17 +25,14 @@ export default function BlogsThree() {
   const [showSlider, setShowSlider] = useState(false);
 
   useEffect(() => {
-    const apiBaseUrl = process.env.NODE_ENV === 'production' 
-      ? 'https://josereimondez.com/api/posts/'
-      : 'http://localhost:8000/api/posts/';
+    const apiBaseUrl = '/api/posts/'; // Usa la URL reescrita en next.config.js
 
     const fetchPosts = async () => {
       try {
         const response = await axios.get(apiBaseUrl);
-        console.log(response.data);
         setPosts(response.data);
-        setShowSlider(true);
         setOutputArray(chunkArray(response.data, 2));
+        setShowSlider(true);
       } catch (error) {
         console.error('There was an error fetching the posts!', error.response || error.message || error);
       }
@@ -79,14 +75,14 @@ export default function BlogsThree() {
                                   <Image
                                     width={430}
                                     height={430}
-                                    src={post.image}
-                                    alt="blog"
+                                    src={post.image || '/default-image.jpg'} // Usa una imagen predeterminada si la imagen es null
+                                    alt={post.title}
                                     style={{ width: "100%", height: "fit-content" }}
                                   />
                                 </a>
                                 <div className="blog-meta">
-                                  <span className="blog-date">{post.created_at}</span>
-                                  <span className="blog-category">{post.category}</span>
+                                  <span className="blog-date">{new Date(post.created_at).toLocaleDateString()}</span>
+                                  <span className="blog-category">{post.category || 'General'}</span>
                                 </div>
                                 <h6 className="blog-title">
                                   <a className="cursor-pointer" onClick={() => { setModalContent(post); setShowModal(true); }}>{post.title}</a>
@@ -107,7 +103,7 @@ export default function BlogsThree() {
 
         <div className="footer-copyright text-center bg-light-white-2 pt-25 pb-25">
           <span>
-            © {new Date().getFullYear()} Todos los Derechos Reservados - prueba - Web Diseñada por José Reimondez
+            © {new Date().getFullYear()} Todos los Derechos Reservados - prueba3 - Web Diseñada por José Reimondez
           </span>
         </div>
       </div>
@@ -117,6 +113,7 @@ export default function BlogsThree() {
     </>
   );
 }
+
 
 
 
