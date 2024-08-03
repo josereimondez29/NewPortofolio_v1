@@ -108,10 +108,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Para más control sobre los orígenes permitidos, usa esta configuración:
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',
-#     'https://josereimondez.com',
-# ]
+CORS_ALLOWED_ORIGINS = [
+     'http://localhost:3000',
+    'https://josereimondez.com',
+    'https://api.josereimondez.com',
+ ]
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = ['*']

@@ -4,7 +4,7 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "http://your-production-api-url/api/:splat"
+  to = "http://127.0.0.1:8000/api/posts/api/:splat"
   status = 200
   force = true
 
