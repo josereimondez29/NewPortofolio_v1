@@ -1,3 +1,6 @@
+// Indica que este es un Client Component
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -113,6 +116,7 @@ export default function BlogsThree() {
     </>
   );
 }
+
 
 
 

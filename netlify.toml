@@ -4,7 +4,7 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "http://127.0.0.1:8000/api/:splat"
+  to = "http://your-production-api-url/api/:splat"
   status = 200
   force = true
 
@@ -12,6 +12,7 @@
   node_bundler = "esbuild"
 
 [functions.timeout]
-  duration = 30 # Aumenta el tiempo de espera si es necesario
+  duration = 30 # Ajusta el tiempo de espera según tus necesidades
+
 
 
