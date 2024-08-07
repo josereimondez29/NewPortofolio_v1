@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[redirects]]
+  from = "/api/*"
+  to = "http://127.0.0.1:8000/api/posts/api/:splat"
+  status = 200
+  force = true
+
+[functions]
+  node_bundler = "esbuild"
+
+[functions.timeout]
+  duration = 30 # Ajusta el tiempo de espera según tus necesidades
+
+
+

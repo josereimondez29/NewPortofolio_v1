@@ -1,10 +1,16 @@
+// Modal.jsx
 "use client";
+<<<<<<< HEAD
 
 import Image from "next/image";
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faRss } from "@fortawesome/free-solid-svg-icons";
+=======
+import React, { useEffect } from "react";
+import Image from "next/image";
+>>>>>>> origin/main
 
 export default function Modal({ setShowModal, showModal, modalContent }) {
   useEffect(() => {
@@ -50,8 +56,13 @@ export default function Modal({ setShowModal, showModal, modalContent }) {
                   <Image
                     src={`https://cuddly-space-carnival-5wrwjwv7j793pg6-8000.app.github.dev${modalContent.image}`}
                     width={800}
+<<<<<<< HEAD
                     height={450}
                     layout="responsive"
+=======
+                    height={800}
+                    src={modalContent?.image}
+>>>>>>> origin/main
                     style={{
                       objectFit: "cover",
                     }}
@@ -61,18 +72,28 @@ export default function Modal({ setShowModal, showModal, modalContent }) {
               </div>
 
               <div className="blog-meta">
+<<<<<<< HEAD
                 <span className="blog-date">{new Date(modalContent?.created_at).toLocaleDateString()}</span>
+=======
+                <span className="blog-date">{modalContent?.created_at}</span>
+>>>>>>> origin/main
                 <span className="blog-category">{modalContent?.category}</span>
               </div>
 
               <h6 className="blog-title">{modalContent?.title}</h6>
 
               <div className="h1-modal-paragraph">
+<<<<<<< HEAD
                 {modalContent?.content ? (
                   <p>{modalContent.content}</p>
                 ) : (
                   <p>No description available.</p>
                 )}
+=======
+                {modalContent?.content && modalContent.content.split("\n").map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
+>>>>>>> origin/main
               </div>
 
               <div className="h1-modal-share-buttons">
@@ -106,6 +127,7 @@ export default function Modal({ setShowModal, showModal, modalContent }) {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       {showModal && (
         <div className="modal-header">
           <button
@@ -118,6 +140,8 @@ export default function Modal({ setShowModal, showModal, modalContent }) {
           </button>
         </div>
       )}
+=======
+>>>>>>> origin/main
     </>
   );
 }

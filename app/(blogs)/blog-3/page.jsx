@@ -2,6 +2,13 @@ import BlogsThree from "@/components/homes/blogs/BlogsThree";
 import HeaderFour from "@/components/homes/headers/HeaderFour";
 import HeaderThree from "@/components/homes/headers/HeaderThree";
 import PersonalInfoThree from "@/components/homes/personalInfo/PersonalInfoThree";
+const express = require('express');
+
+
+const app = express();
+
+
+
 export const metadata = {
   title: "José Reimondez || Blog",
   
