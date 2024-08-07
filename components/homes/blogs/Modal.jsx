@@ -1,6 +1,10 @@
 "use client";
+
 import Image from "next/image";
 import React, { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faRss } from "@fortawesome/free-solid-svg-icons";
 
 export default function Modal({ setShowModal, showModal, modalContent }) {
   useEffect(() => {
@@ -8,31 +12,27 @@ export default function Modal({ setShowModal, showModal, modalContent }) {
       const modalDialog = document.querySelector(".modal");
       const modalContent = document.querySelector(".modal-content");
 
-      // Check if the click is outside of modal-content but inside modal-dialog
       if (
         modalDialog &&
         modalContent &&
         !modalContent.contains(event.target) &&
         modalDialog.contains(event.target)
       ) {
-        // Your logic for handling the click outside modal-content
         setShowModal(false);
       }
     };
 
-    // Attach the event listener when the component mounts
     document.addEventListener("click", handleDocumentClick);
 
-    // Detach the event listener when the component unmounts
     return () => {
       document.removeEventListener("click", handleDocumentClick);
     };
-  }, []); // Empty dependency array ensures the effect runs once after the initial render
+  }, [setShowModal]);
 
   return (
     <>
       <div
-        className={`modal h1-modal-box fade ${showModal ? "show" : ""} `}
+        className={`modal h1-modal-box fade ${showModal ? "show" : ""}`}
         id="h1-blog-1"
         tabIndex="-1"
         role="dialog"
@@ -46,75 +46,68 @@ export default function Modal({ setShowModal, showModal, modalContent }) {
           <div className="modal-content">
             <div className="modal-body">
               <div className="h1-modal-img">
-                {modalContent?.imgSrc && (
+                {modalContent?.image && (
                   <Image
+                    src={`https://cuddly-space-carnival-5wrwjwv7j793pg6-8000.app.github.dev${modalContent.image}`}
                     width={800}
-                    height={800}
-                    src={modalContent?.imgSrc}
+                    height={450}
+                    layout="responsive"
                     style={{
-                      width: "100%",
-                      height: "fit-content",
-                      maxHeight: "450px",
                       objectFit: "cover",
                     }}
-                    alt="blog"
+                    alt={modalContent.title || "Blog post image"}
                   />
                 )}
               </div>
 
               <div className="blog-meta">
-                <span className="blog-date">{modalContent?.date}</span>
-                <span className="blog-cetagory">{modalContent?.category}</span>
+                <span className="blog-date">{new Date(modalContent?.created_at).toLocaleDateString()}</span>
+                <span className="blog-category">{modalContent?.category}</span>
               </div>
 
               <h6 className="blog-title">{modalContent?.title}</h6>
 
               <div className="h1-modal-paragraph">
-                {modalContent?.desc.map((elm, i) => (
-                  <p key={i}>{elm}</p>
-                ))}
+                {modalContent?.content ? (
+                  <p>{modalContent.content}</p>
+                ) : (
+                  <p>No description available.</p>
+                )}
               </div>
 
-              <div className="h1-modal-comment-item">
-                <div className="img">
-                  <Image
-                    width={125}
-                    height={152}
-                    src="/assets/img/parsonal-info/parson-img-2.png"
-                    alt="comment"
-                  />
-                </div>
-                <div className="content">
-                  <div className="name-date">
-                    <h5 className="name">Rafia Ana</h5>
-                    <span className="date">15 min ago</span>
-                  </div>
-                  <p className="comment-text">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Sequi nam ad, unde vel aut soluta atque consequatur. Omnis,
-                    debitis nihil?
-                  </p>
-                  <a className="reply-btn" href="#">
-                    Reply
-                  </a>
-                </div>
-              </div>
-
-              <div className="h1-modal-comment-box">
-                <h2 className="title">Leave a Reply</h2>
-                <textarea
-                  cols="30"
-                  rows="10"
-                  placeholder="write comment"
-                ></textarea>
-                <button>comment</button>
+              <div className="h1-modal-share-buttons">
+                <span>Compartir:</span>
+                <button
+                  className="btn btn-linkedin"
+                  onClick={() => shareOnLinkedIn(modalContent)}
+                >
+                  <FontAwesomeIcon icon={faLinkedin} size="lg" />
+                </button>
+                <button
+                  className="btn btn-whatsapp"
+                  onClick={() => shareOnWhatsApp(modalContent)}
+                >
+                  <FontAwesomeIcon icon={faWhatsapp} size="lg" />
+                </button>
+                <button
+                  className="btn btn-email"
+                  onClick={() => shareByEmail(modalContent)}
+                >
+                  <FontAwesomeIcon icon={faEnvelope} size="lg" />
+                </button>
+                <button
+                  className="btn btn-rss"
+                  onClick={() => shareRSS()}
+                >
+                  <FontAwesomeIcon icon={faRss} size="lg" />
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
       {showModal && (
-        <div className="modal-header ">
+        <div className="modal-header">
           <button
             type="button"
             className="close"
@@ -128,3 +121,26 @@ export default function Modal({ setShowModal, showModal, modalContent }) {
     </>
   );
 }
+
+// Helper functions for sharing
+const shareOnLinkedIn = (post) => {
+  const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`;
+  window.open(url, '_blank');
+};
+
+const shareByEmail = (post) => {
+  const subject = `Check out this blog post: ${post.title}`;
+  const body = `${post.content}\n\nRead more: ${window.location.href}`;
+  window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+};
+
+const shareOnWhatsApp = (post) => {
+  const url = `https://wa.me/?text=${encodeURIComponent(post.content + '\n\nRead more: ' + window.location.href)}`;
+  window.open(url, '_blank');
+};
+
+const shareRSS = () => {
+  const rssFeedUrl = 'http://example.com/rss-feed.xml'; // Replace with your actual RSS feed URL
+  window.open(rssFeedUrl, '_blank');
+};
+

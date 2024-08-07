@@ -2,11 +2,11 @@
 
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { blogData } from "@/data/blogs";
-
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Modal from "./Modal";
 import Image from "next/image";
+
 const chunkArray = (arr, chunkSize) => {
   const result = [];
   for (let i = 0; i < arr.length; i += chunkSize) {
@@ -16,19 +16,33 @@ const chunkArray = (arr, chunkSize) => {
 };
 
 export default function BlogsThree() {
-  const [outputArray, setfirst] = useState(chunkArray(blogData, 4));
+  const [blogData, setBlogData] = useState([]);
+  const [outputArray, setOutputArray] = useState([]);
   const [modalContent, setModalContent] = useState();
   const [showModal, setShowModal] = useState(false);
   const [showSlider, setShowSlider] = useState(false);
+
   useEffect(() => {
-    setShowSlider(true);
+    fetchBlogData();
   }, []);
+
+  const fetchBlogData = async () => {
+    try {
+      const response = await axios.get("https://cuddly-space-carnival-5wrwjwv7j793pg6-8000.app.github.dev/api/posts/");
+      setBlogData(response.data);
+      setOutputArray(chunkArray(response.data, 4));
+      setShowSlider(true);
+    } catch (error) {
+      console.error("Error fetching blog data:", error);
+    }
+  };
+
   return (
     <>
       <div className="bostami-page-content-wrap">
         <div className="section-wrapper pl-60 pr-60 pt-60">
           <div className="bostami-page-title-wrap mb-15">
-            <h2 className="page-title">blogs</h2>
+            <h2 className="page-title">Blogs</h2>
           </div>
         </div>
 
@@ -37,13 +51,11 @@ export default function BlogsThree() {
             <div className="swiper-container blog-slider-active">
               {showSlider && (
                 <Swiper
-                  // {...setting}
                   modules={[Navigation, Pagination]}
                   pagination={{
                     el: ".blog-progation-three",
                     clickable: true,
                   }}
-                  // loop={true}
                   spaceBetween={10}
                   slidesPerView={1}
                   loop={true}
@@ -54,9 +66,7 @@ export default function BlogsThree() {
                         <div className="row">
                           {elm.map((elm2, i2) => (
                             <div key={i2} className="col-lg-6 col-md-6">
-                              <div
-                                className={`blog-slider-single  ${elm2.bgClass} `}
-                              >
+                              <div className={`blog-slider-single ${elm2.bgClass}`}>
                                 <a className="img cursor-pointer">
                                   <Image
                                     width={430}
@@ -69,15 +79,13 @@ export default function BlogsThree() {
                                       width: "100%",
                                       height: "fit-content",
                                     }}
-                                    src={elm2.imgSrc}
-                                    alt="blog"
+                                    src={`https://cuddly-space-carnival-5wrwjwv7j793pg6-8000.app.github.dev${elm2.image}`} // Construir la URL completa para la imagen
+                                    alt={elm2.title} // Utiliza el título o alguna descripción relevante como alt
                                   />
                                 </a>
                                 <div className="blog-meta">
-                                  <span className="blog-date">{elm2.date}</span>
-                                  <span className="blog-cetagory">
-                                    {elm2.category}
-                                  </span>
+                                  <span className="blog-date">{new Date(elm2.created_at).toLocaleDateString()}</span>
+                                  <span className="blog-category">{elm2.category}</span>
                                 </div>
                                 <h6
                                   className="blog-title"
@@ -104,7 +112,7 @@ export default function BlogsThree() {
 
         <div className="footer-copyright text-center bg-light-white-2 pt-25 pb-25">
           <span>
-            © {new Date().getFullYear()} Todos los Derechos Reservados - Web Diseñada por José Reimondez
+            © {new Date().getFullYear()} All Rights Reserved by ib-themes.
           </span>
         </div>
       </div>
@@ -116,3 +124,5 @@ export default function BlogsThree() {
     </>
   );
 }
+
+

@@ -242,3 +242,40 @@ body {
         font-size: 22px;
     }
 }
+ /*modal*/
+ .h1-modal-share-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .h1-modal-share-buttons button {
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .h1-modal-share-buttons button:hover {
+    background-color: #e9ecef;
+    transform: scale(1.1);
+  }
+  
+  .btn-linkedin {
+    color: #0077b5;
+  }
+  
+  .btn-whatsapp {
+    color: #25d366;
+  }
+  
+  .btn-email {
+    color: #ea4335;
+  }
+  
+  .btn-rss {
+    color: #ff6600;
+  }
+  

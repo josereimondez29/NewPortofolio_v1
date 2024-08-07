@@ -15,5 +15,6 @@
     "python.analysis.extraPaths": [
         "/Users/josereimondez/blogcv_app/NewPortofolio_v1",
         "/Users/josereimondez/blogcv_app/NewPortofolio_v1/myblog"
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }
